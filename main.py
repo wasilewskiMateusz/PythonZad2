@@ -24,7 +24,6 @@ def find_nearest_point():
 
 def create_sheeps():
     for i in range(numb_of_sheeps):
-        # musi być włącznie
         sheeps.append([random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0), i + 1])
 
 
