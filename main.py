@@ -24,7 +24,7 @@ def find_nearest_point():
 
 def create_sheeps():
     for i in range(numb_of_sheeps):
-        sheeps.append([random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0), i + 1])
+        sheeps.append([random.uniform(-init_pos_limit, init_pos_limit), random.uniform(-init_pos_limit, init_pos_limit), i + 1])
 
 
 def create_wolf():
@@ -33,9 +33,9 @@ def create_wolf():
 
 def move_sheeps():
     direction = [-1, 1]
-    for i in range(len(sheeps)):
-        if sheeps[i] is not None:
-            sheeps[i][random.randrange(2)] += (direction[random.randrange(2)] * sheep_move_dist)
+    for sheep in sheeps:
+        if sheep is not None:
+            sheep[random.randrange(2)] += (direction[random.randrange(2)] * sheep_move_dist)
 
 
 def move_wolf():
@@ -86,7 +86,7 @@ if __name__ == '__main__':
             'wolf_pos': wolf[0],
             'sheep_pos': sheeps_json}
 
-        json.dump(round_dict, pos_file)
+        json.dump(round_dict, pos_file, indent=4)
         if i != numb_of_turns-1:
             pos_file.write(',\n')
     pos_file.write(']')
